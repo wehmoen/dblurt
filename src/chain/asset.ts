@@ -46,7 +46,7 @@ export interface SMTAsset {
  * Asset symbol string.
  */
 export type AssetSymbol =
-  | 'HIVE'
+  | 'BLURT'
   | 'VESTS'
   | 'HBD'
   | 'TESTS'
@@ -69,7 +69,7 @@ export class Asset {
   public static fromString(string: string, expectedSymbol?: AssetSymbol) {
     const [amountString, symbol] = string.split(' ')
     if (
-      !['HIVE', 'VESTS', 'HBD', 'TESTS', 'TBD', 'SBD', 'STEEM'].includes(symbol)
+      !['BLURT', 'VESTS', 'TESTS', 'TBD', 'SBD'].includes(symbol)
     ) {
       throw new Error(`Invalid asset symbol: ${symbol}`)
     }
@@ -136,7 +136,7 @@ export class Asset {
     switch (this.symbol) {
       case 'TESTS':
       case 'TBD':
-      case 'HIVE':
+      case 'BLURT':
       case 'HBD':
       case 'SBD':
       case 'STEEM':
@@ -152,7 +152,7 @@ export class Asset {
    */
   public steem_symbols(): Asset {
     switch (this.symbol) {
-      case 'HIVE':
+      case 'BLURT':
         return Asset.from(this.amount, 'STEEM')
       case 'HBD':
         return Asset.from(this.amount, 'SBD')

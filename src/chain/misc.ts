@@ -235,7 +235,7 @@ export function getVestingSharePrice(props: DynamicGlobalProperties): Price {
   const totalVestingFund = Asset.from(props.total_vesting_fund_hive)
   const totalVestingShares = Asset.from(props.total_vesting_shares)
   if (totalVestingFund.amount === 0 || totalVestingShares.amount === 0) {
-    return new Price(new Asset(1, 'VESTS'), new Asset(1, 'HIVE'))
+    return new Price(new Asset(1, 'VESTS'), new Asset(1, 'BLURT'))
   }
   return new Price(totalVestingShares, totalVestingFund)
 }

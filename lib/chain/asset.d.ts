@@ -40,7 +40,7 @@ export interface SMTAsset {
 /**
  * Asset symbol string.
  */
-export declare type AssetSymbol = 'HIVE' | 'VESTS' | 'HBD' | 'TESTS' | 'TBD' | 'STEEM' | 'SBD';
+export declare type AssetSymbol = 'BLURT' | 'VESTS' | 'HBD' | 'TESTS' | 'TBD' | 'STEEM' | 'SBD';
 /**
  * Class representing a hive asset, e.g. `1.000 HIVE` or `12.112233 VESTS`.
  */

@@ -4,12 +4,9 @@ import {Client, BlockchainMode} from '@hiveio/dhive'
 import * as removeMarkdown from 'remove-markdown'
 
 const DEFAULT_SERVER = [
-    'https://rpc.esteem.app',
-    'https://anyx.io',
-    'https://api.pharesim.me',
-    'https://api.hive.blog',
-    'https://api.hivekings.com',
-  ];
+    'https://api.blurt.blog',
+    'https://rpc.blurt.world',
+];
 const client = new Client(DEFAULT_SERVER, {
     timeout: 5000,
   })
