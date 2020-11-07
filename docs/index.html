@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@hiveio/dhive</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for @hiveio/dhive">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -64,18 +64,14 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#dhive" id="dhive" style="color: inherit; text-decoration: none;">
-					<h1><a href="https://github.com">dhive</a></h1>
+				<a href="#dblurt" id="dblurt" style="color: inherit; text-decoration: none;">
+					<h1><a href="https://gitlab.com/blurt">dblurt</a></h1>
 				</a>
-				<p>Robust hive client library that runs in both node.js and the browser.</p>
+				<p>Robust blurt client library that runs in both node.js and the browser.</p>
 				<p>Needs test net urls, chain id</p>
 				<hr>
 				<p><strong>note</strong> As of version 0.7.0 WebSocket support has been removed. The only transport provided now is HTTP(2). For most users the only change required is to swap <code>wss://</code> to <code>https://</code> in the address. If you run your own full node make sure to set the proper <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS headers</a> if you plan to access it from a browser.</p>
 				<hr>
-				<a href="#browser-compatibility" id="browser-compatibility" style="color: inherit; text-decoration: none;">
-					<h2>Browser compatibility</h2>
-				</a>
-				<p><a href="https://saucelabs.com/open_sauce/user/feruzm-dhive"><img src="https://saucelabs.com/browser-matrix/feruzm-dhive.svg" alt="Build Status"></a></p>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
@@ -83,104 +79,22 @@
 					<h3>Via npm</h3>
 				</a>
 				<p>For node.js or the browser with <a href="https://github.com/substack/node-browserify">browserify</a> or <a href="https://github.com/webpack/webpack">webpack</a>.</p>
-				<pre><code><span class="hljs-built_in">npm</span> install @hiveio/dhive</code></pre>
+				<pre><code></code></pre>
 				<a href="#from-cdn-or-self-hosted-script" id="from-cdn-or-self-hosted-script" style="color: inherit; text-decoration: none;">
 					<h3>From cdn or self-hosted script</h3>
 				</a>
-				<p>Grab <code>dist/dhive.js</code> from git and include in your html:</p>
-				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"@hiveio/dhive.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-				<p>Or from the <a href="https://unpkg.com">unpkg</a> cdn:</p>
-				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/@hiveio/dhive@latest/dist/dhive.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-				<p>Make sure to set the version you want when including from the cdn, you can also use <code>dhive@latest</code> but that is not always desirable. See <a href="https://unpkg.com">unpkg.com</a> for more information.</p>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
 				<a href="#in-the-browser" id="in-the-browser" style="color: inherit; text-decoration: none;">
 					<h3>In the browser</h3>
 				</a>
-				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/@hiveio/dhive@latest/dist/dhive.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-  <span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> dhive.Client([<span class="hljs-string">"https://api.hive.blog"</span>, <span class="hljs-string">"https://api.hivekings.com"</span>, <span class="hljs-string">"https://anyx.io"</span>, <span class="hljs-string">"https://api.openhive.network"</span>]);
-  client.database
-    .getDiscussions(<span class="hljs-string">"trending"</span>, { <span class="hljs-attr">tag</span>: <span class="hljs-string">"writing"</span>, <span class="hljs-attr">limit</span>: <span class="hljs-number">1</span> })
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">discussions</span>) </span>{
-      <span class="hljs-built_in">document</span>.body.innerHTML += <span class="hljs-string">"&lt;h1&gt;"</span> + discussions[<span class="hljs-number">0</span>].title + <span class="hljs-string">"&lt;/h1&gt;"</span>;
-      <span class="hljs-built_in">document</span>.body.innerHTML += <span class="hljs-string">"&lt;h2&gt;by "</span> + discussions[<span class="hljs-number">0</span>].author + <span class="hljs-string">"&lt;/h2&gt;"</span>;
-      <span class="hljs-built_in">document</span>.body.innerHTML +=
-        <span class="hljs-string">'&lt;pre style="white-space: pre-wrap"&gt;'</span> + discussions[<span class="hljs-number">0</span>].body + <span class="hljs-string">"&lt;/pre&gt;"</span>;
-    });
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-				<p>See the <a href="https://github.com/openhive-network/dhive/tree/master/examples/comment-feed">demo source</a> for an example on how to setup a livereloading TypeScript pipeline with <a href="https://github.com/jnordberg/wintersmith">wintersmith</a> and <a href="https://github.com/substack/node-browserify">browserify</a>.</p>
 				<a href="#in-nodejs" id="in-nodejs" style="color: inherit; text-decoration: none;">
 					<h3>In node.js</h3>
 				</a>
-				<p>With TypeScript:</p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Client } <span class="hljs-keyword">from</span> <span class="hljs-string">"@hiveio/dhive"</span>;
-
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Client([<span class="hljs-string">"https://api.hive.blog"</span>, <span class="hljs-string">"https://api.hivekings.com"</span>, <span class="hljs-string">"https://anyx.io"</span>, <span class="hljs-string">"https://api.openhive.network"</span>]);
-
-<span class="hljs-keyword">for</span> <span class="hljs-keyword">await</span> (<span class="hljs-keyword">const</span> block of client.blockchain.getBlocks()) {
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`New block, id: <span class="hljs-subst">${block.block_id}</span>`</span>);
-}</code></pre>
-				<p>With JavaScript:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> dhive = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@hiveio/dhive"</span>);
-
-<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> dhive.Client([<span class="hljs-string">"https://api.hive.blog"</span>, <span class="hljs-string">"https://api.hivekings.com"</span>, <span class="hljs-string">"https://anyx.io"</span>, <span class="hljs-string">"https://api.openhive.network"</span>]);
-<span class="hljs-keyword">var</span> key = dhive.PrivateKey.fromLogin(<span class="hljs-string">"username"</span>, <span class="hljs-string">"password"</span>, <span class="hljs-string">"posting"</span>);
-
-client.broadcast
-  .vote(
-    {
-      <span class="hljs-attr">voter</span>: <span class="hljs-string">"username"</span>,
-      <span class="hljs-attr">author</span>: <span class="hljs-string">"almost-digital"</span>,
-      <span class="hljs-attr">permlink</span>: <span class="hljs-string">"dhive-is-the-best"</span>,
-      <span class="hljs-attr">weight</span>: <span class="hljs-number">10000</span>
-    },
-    key
-  )
-  .then(
-    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>{
-      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Included in block: "</span> + result.block_num);
-    },
-    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
-      <span class="hljs-built_in">console</span>.error(error);
-    }
-  );</code></pre>
-				<p>With ES2016 (node.js 7+):</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> { Client } = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@hiveio/dhive"</span>);
-
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Client([<span class="hljs-string">"https://api.hive.blog"</span>, <span class="hljs-string">"https://api.hivekings.com"</span>, <span class="hljs-string">"https://anyx.io"</span>, <span class="hljs-string">"https://api.openhive.network"</span>]);
-
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">const</span> props = <span class="hljs-keyword">await</span> client.database.getChainProperties();
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Maximum blocksize consensus: <span class="hljs-subst">${props.maximum_block_size}</span> bytes`</span>);
-  client.disconnect();
-}
-
-main().catch(<span class="hljs-built_in">console</span>.error);</code></pre>
-				<p>With node.js streams:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> dhive = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@hiveio/dhive"</span>);
-<span class="hljs-keyword">var</span> es = <span class="hljs-built_in">require</span>(<span class="hljs-string">"event-stream"</span>); <span class="hljs-comment">// npm install event-stream</span>
-<span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">"util"</span>);
-
-<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> dhive.Client([<span class="hljs-string">"https://api.hive.blog"</span>, <span class="hljs-string">"https://api.hivekings.com"</span>, <span class="hljs-string">"https://anyx.io"</span>, <span class="hljs-string">"https://api.openhive.network"</span>]);
-
-<span class="hljs-keyword">var</span> stream = client.blockchain.getBlockStream();
-
-stream
-  .pipe(
-    es.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">block, callback</span>) </span>{
-      callback(<span class="hljs-literal">null</span>, util.inspect(block, { <span class="hljs-attr">colors</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">depth</span>: <span class="hljs-literal">null</span> }) + <span class="hljs-string">"\n"</span>);
-    })
-  )
-  .pipe(process.stdout);</code></pre>
 				<a href="#bundling" id="bundling" style="color: inherit; text-decoration: none;">
 					<h2>Bundling</h2>
 				</a>
-				<p>The easiest way to bundle dhive (with browserify, webpack etc.) is to just <code>npm install @hiveio/dhive</code> and <code>require(&#39;@hiveio/dhive&#39;)</code> which will give you well-tested (see browser compatibility matrix above) pre-bundled code guaranteed to JustWork™. However, that is not always desirable since it will not allow your bundler to de-duplicate any shared dependencies dhive and your app might have.</p>
-				<p>To allow for deduplication you can <code>require(&#39;@hiveio/dhive/lib/index-browser&#39;)</code>, or if you plan to provide your own polyfills: <code>require(&#39;@hiveio/dhive/lib/index&#39;)</code>. See <code>src/index-browser.ts</code> for a list of polyfills expected.</p>
-				<hr>
-				<p><em>Share and Enjoy!</em></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -548,10 +462,7 @@ stream
 						<a href="globals.html#default_chain_id" class="tsd-kind-icon">DEFAULT_<wbr>CHAIN_<wbr>ID</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#hf23_chain_id" class="tsd-kind-icon">HF23_<wbr>CHAIN_<wbr>ID</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#hf24_chain_id" class="tsd-kind-icon">HF24_<wbr>CHAIN_<wbr>ID</a>
+						<a href="globals.html#jsbi" class="tsd-kind-icon">JSBI</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#network_id" class="tsd-kind-icon">NETWORK_<wbr>ID</a>
@@ -573,9 +484,6 @@ stream
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#variablebinaryserializer" class="tsd-kind-icon">Variable<wbr>Binary<wbr>Serializer</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#rebrandedapiglobal" class="tsd-kind-icon">rebranded<wbr>Api<wbr>Global</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#timeouterrors" class="tsd-kind-icon">timeout<wbr>Errors</a>
@@ -689,6 +597,12 @@ stream
 						<a href="globals.html#iteratorstream" class="tsd-kind-icon">iterator<wbr>Stream</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#makebitmaskfilter" class="tsd-kind-icon">make<wbr>Bit<wbr>Mask<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#redfunction" class="tsd-kind-icon">red<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#retryingfetch" class="tsd-kind-icon">retrying<wbr>Fetch</a>
 					</li>
 					<li class=" tsd-kind-function">
@@ -709,9 +623,6 @@ stream
 					<li class=" tsd-kind-function">
 						<a href="globals.html#transactiondigest" class="tsd-kind-icon">transaction<wbr>Digest</a>
 					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#updateoperations" class="tsd-kind-icon">update<wbr>Operations</a>
-					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#waitforevent" class="tsd-kind-icon">wait<wbr>For<wbr>Event</a>
 					</li>
@@ -720,6 +631,9 @@ stream
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#cryptoutils" class="tsd-kind-icon">crypto<wbr>Utils</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#operationorders" class="tsd-kind-icon">operation<wbr>Orders</a>
 					</li>
 				</ul>
 			</nav>
@@ -753,6 +667,5 @@ stream
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

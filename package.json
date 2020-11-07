@@ -75,7 +75,7 @@
     "tslint": "^5.11.0",
     "typedoc": "^0.17.1",
     "typescript": "^3.8.3",
-    "uglify-js": "^3.4.9",
+    "uglify-js": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
     "watchify": "^3.11.0"
   }
 }

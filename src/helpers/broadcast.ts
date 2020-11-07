@@ -312,7 +312,7 @@ export class BroadcastAPI {
     key: PrivateKey | PrivateKey[]
   ): Promise<TransactionConfirmation> {
     const props = await this.client.database.getDynamicGlobalProperties();
-    this.client.chainId = Buffer.from(this.client.chainId, 'hex');
+    this.client.chainId = Buffer.from('cd8d90f29ae273abec3eaa7731e25934c63eb654d55080caff2ebb7f5df6381f', 'hex');
 
     const ref_block_num = props.head_block_number & 0xffff;
     const ref_block_prefix = Buffer.from(
@@ -347,7 +347,7 @@ export class BroadcastAPI {
     transaction: Transaction,
     key: PrivateKey | PrivateKey[]
   ): SignedTransaction {
-    return cryptoUtils.signTransaction(transaction, key, this.client.chainId);
+    return cryptoUtils.signTransaction(transaction, key, Buffer.from('cd8d90f29ae273abec3eaa7731e25934c63eb654d55080caff2ebb7f5df6381f', 'hex'));
   }
 
   /**
